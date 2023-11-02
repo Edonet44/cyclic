@@ -1,34 +1,32 @@
-// const express = require('express');
-// const app = express();
-// const router = express.Router();
-
 const express = require('express');
 const app = express();
 const port = 3000;
 
+// Crea un oggetto Router
+const router = express.Router();
 let records = [];
 
-//Get all students
+// Get all students
 router.get('/', (req, res) => {
   res.send('App is running..');
 });
 
-//Create new record
+// Create new record
 router.post('/add', (req, res) => {
   res.send('New record added.');
 });
 
-//delete existing record
+// Delete existing record
 router.delete('/', (req, res) => {
   res.send('Deleted existing record');
 });
 
-//updating existing record
+// Update existing record
 router.put('/', (req, res) => {
   res.send('Updating existing record');
 });
 
-//showing demo records
+// Showing demo records
 router.get('/demo', (req, res) => {
   res.json([
     {
@@ -47,5 +45,13 @@ router.get('/demo', (req, res) => {
       email: 'lily@gmail.com',
     },
   ]);
+});
+
+// Registra il router nel percorso specificato (ad esempio, '/api')
+app.use('/api', router);
+
+// Avvia il server sulla porta specificata
+app.listen(port, () => {
+  console.log(`Server is listening on port ${port}`);
 });
 
