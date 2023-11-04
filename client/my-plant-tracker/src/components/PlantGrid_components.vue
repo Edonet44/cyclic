@@ -45,19 +45,9 @@ export default {
       plants: [],
     };
   },
-  // created() {
-  //   axios
-  //     .get("https://yellow-vulture-suit.cyclic.app/plants")
-  //     .then((response) => {
-  //       this.plants = response.data;
-  //     })
-  //     .catch((error) => {
-  //       console.error(error);
-  //     });
-  // },
-   created() {
+  created() {
     axios
-      .get('/plants')
+      .get("https://yellow-vulture-suit.cyclic.app/plants")
       .then((response) => {
         this.plants = response.data;
       })
@@ -65,6 +55,16 @@ export default {
         console.error(error);
       });
   },
+  //  created() {
+  //   axios
+  //     .get('/plants')
+  //     .then((response) => {
+  //       this.plants = response.data;
+  //     })
+  //     .catch((error) => {
+  //       console.error(error);
+  //     });
+  // },
 };
 </script>
 
