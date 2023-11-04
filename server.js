@@ -1,64 +1,50 @@
-// const express = require('express');
-// const app = express();
-// const port = 3000;
 
-// // Crea un oggetto Router
-// const router = express.Router();
-// let records = [];
 
-// // Get all students
-// router.get('/', (req, res) => {
-//   res.send('App is running..');
-// });
+const plantsData = [
+  {
+    _id: '1',
+    name: 'Pianta 1',
+    plantingDate: '2023-01-01',
+    initialHeight: 30,
+    notes: 'Questa è una pianta molto bella.',
+    imageUrl: 'url_immagine_1.jpg',
+  },
+  {
+    _id: '2',
+    name: 'Pianta 2',
+    plantingDate: '2023-02-15',
+    initialHeight: 25,
+    notes: 'Questa è un\'altra pianta fantastica.',
+    imageUrl: 'url_immagine_2.jpg',
+  },
+  // Aggiungi altri dati delle piante
+];
 
-// // Create new record
-// router.post('/add', (req, res) => {
-//   res.send('New record added.');
-// });
-
-// // Delete existing record
-// router.delete('/', (req, res) => {
-//   res.send('Deleted existing record');
-// });
-
-// // Update existing record
-// router.put('/', (req, res) => {
-//   res.send('Updating existing record');
-// });
-
-// // Showing demo records
-// router.get('/demo', (req, res) => {
-//   res.json([
-//     {
-//       id: '001',
-//       name: 'Smith',
-//       email: 'smith@gmail.com',
-//     },
-//     {
-//       id: '002',
-//       name: 'Sam',
-//       email: 'sam@gmail.com',
-//     },
-//     {
-//       id: '003',
-//       name: 'lily',
-//       email: 'lily@gmail.com',
-//     },
-//   ]);
-// });
-
-// // Registra il router nel percorso specificato (ad esempio, '/api')
-// app.use('/api', router);
-
-// // Avvia il server sulla porta specificata
-// app.listen(port, () => {
-//   console.log(`Server is listening on port ${port}`);
-// });
-
+const https = require('https');
 const express = require('express')
-const app = express()
-app.all('/', (req, res) => {
-    console.log("Just got a request!")
-    res.send('Yo!')
-})
+const app = express();
+
+//abilitare i Cors
+https.createServer(options, (req, res) => {
+  res.writeHead(200, {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
+  });
+  res.end(JSON.stringify({
+     version: '1.0',
+     endpoint: req.url,
+     method: req.method,
+     headers: req.headers 
+  }, null, 2));
+}).listen(PORT);
+
+// app.all('/', (req, res) => {
+//     console.log("Just got a request!")
+//     res.send('Yo!')
+// });
+// Gestisci la richiesta per ottenere tutti i dati delle piante
+app.get('/plants', (req, res) => {
+  res.json(plantsData);
+});
 app.listen(process.env.PORT || 3000)
