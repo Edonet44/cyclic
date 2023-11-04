@@ -26,10 +26,12 @@ const app = express();
 const cors = require('cors');
 //abilitare i Cors
 const corsOptions = {
-  origin: 'https://myplanttracker-2e0a9.web.app', // Sostituisci con il tuo dominio Firebase Hosting
+  origin: 'https://myplanttracker-2e0a9.web.app', // Dominio client 
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true,
 };
+//abilita i cors
+app.use(cors(corsOptions));
 
 app.all('/', (req, res) => {
     console.log("Richiesta in corso")

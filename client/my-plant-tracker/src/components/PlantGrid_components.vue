@@ -48,7 +48,7 @@ export default {
   created() {
 
 const instance = axios.create({
-  baseURL: 'https://yellow-vulture-suit.cyclic.app', // Sostituisci con l'URL del tuo servizio Node.js
+  baseURL: 'https://yellow-vulture-suit.cyclic.app', // Dominio Server
   timeout: 10000,
   withCredentials: true,
 });
