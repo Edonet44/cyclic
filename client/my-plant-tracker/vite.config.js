@@ -19,6 +19,10 @@ export default defineConfig({
         target: 'https://yellow-vulture-suit.cyclic.app',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/plants/, ''),
+        headers: {
+          'Access-Control-Allow-Origin': 'https://myplanttracker-2e0a9.web.app', // Sostituisci con il dominio del tuo client
+          'Access-Control-Allow-Credentials': 'true',
+        },
       },
     },
   },
