@@ -45,9 +45,19 @@ export default {
       plants: [],
     };
   },
-  created() {
+  // created() {
+  //   axios
+  //     .get("https://yellow-vulture-suit.cyclic.app/plants")
+  //     .then((response) => {
+  //       this.plants = response.data;
+  //     })
+  //     .catch((error) => {
+  //       console.error(error);
+  //     });
+  // },
+   created() {
     axios
-      .get("https://yellow-vulture-suit.cyclic.app/plants")
+      .get('/plants')
       .then((response) => {
         this.plants = response.data;
       })

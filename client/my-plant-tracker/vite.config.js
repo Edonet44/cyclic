@@ -12,5 +12,14 @@ export default defineConfig({
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
-  }
+  },
+  server: {
+    proxy: {
+      '/plants': {
+        target: 'https://yellow-vulture-suit.cyclic.app',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/plants/, ''),
+      },
+    },
+  },
 })
