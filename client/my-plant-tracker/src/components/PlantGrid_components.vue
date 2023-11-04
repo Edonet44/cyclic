@@ -46,25 +46,32 @@ export default {
     };
   },
   created() {
-    axios
-      .get("https://yellow-vulture-suit.cyclic.app/plants")
-      .then((response) => {
-        this.plants = response.data;
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+
+const instance = axios.create({
+  baseURL: 'https://yellow-vulture-suit.cyclic.app', // Sostituisci con l'URL del tuo servizio Node.js
+  timeout: 10000,
+  withCredentials: true,
+});
+// Ora puoi utilizzare questa istanza di Axios per effettuare le tue richieste API
+instance.get('/plants')
+  .then((response) => {
+     this.plants = response.data;
+  })
+  .catch((error) => {
+    console.error(error);
+  });
+
+//vecchio funzionante
+    // axios
+    //   .get("https://yellow-vulture-suit.cyclic.app/plants")
+    //   .then((response) => {
+    //     this.plants = response.data;
+    //   })
+    //   .catch((error) => {
+    //     console.error(error);
+    //   });
   },
-  //  created() {
-  //   axios
-  //     .get('/plants')
-  //     .then((response) => {
-  //       this.plants = response.data;
-  //     })
-  //     .catch((error) => {
-  //       console.error(error);
-  //     });
-  // },
+ 
 };
 </script>
 
