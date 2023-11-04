@@ -20,25 +20,65 @@ const plantsData = [
   // Aggiungi altri dati delle piante
 ];
 
-//const https = require('https');
-const express = require('express')
+//old
+
+// const express = require('express')
+// const app = express();
+// const cors = require('cors');
+// //abilitare i Cors
+// const corsOptions = {
+//   origin: 'https://myplanttracker-2e0a9.web.app', // Dominio client
+//   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+//   credentials: true,
+// };
+// //abilita i cors
+// app.use(cors(corsOptions));
+
+// app.all('/', (req, res) => {
+//     console.log("Richiesta in corso")
+//     res.send('Server avviato')
+// });
+// // Gestisci la richiesta per ottenere tutti i dati delle piante
+// app.get('/plants', (req, res) => {
+//   res.json(plantsData);
+// });
+// app.listen(process.env.PORT || 3000)
+
+
+const express = require('express');
 const app = express();
 const cors = require('cors');
-//abilitare i Cors
+
+// Abilita il CORS
 const corsOptions = {
-  origin: 'https://myplanttracker-2e0a9.web.app', // Dominio client 
+  origin: 'https://myplanttracker-2e0a9.web.app', // Sostituisci con il dominio effettivo del tuo client
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true,
 };
-//abilita i cors
+
+// Applica il middleware CORS all'app
 app.use(cors(corsOptions));
 
 app.all('/', (req, res) => {
-    console.log("Richiesta in corso")
-    res.send('Server avviato')
+  console.log("Richiesta in corso");
+  res.send('Server avviato');
 });
+
 // Gestisci la richiesta per ottenere tutti i dati delle piante
 app.get('/plants', (req, res) => {
-  res.json(plantsData);
+  if (!plantsData) {
+    res.status(500).json({ error: 'Dati delle piante non trovati' });
+  } else {
+    res.json(plantsData);
+  }
 });
-app.listen(process.env.PORT || 3000)
+
+// Gestione degli errori
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({ error: 'Errore interno del server' });
+});
+
+app.listen(process.env.PORT || 3000, () => {
+  console.log('Server in ascolto sulla porta ' + (process.env.PORT || 3000));
+});
