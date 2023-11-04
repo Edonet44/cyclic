@@ -41,7 +41,7 @@ const app = express();
 
 app.all('/', (req, res) => {
     console.log("Richiesta in corso")
-    res.send('Server ok')
+    res.send('Server avviato')
 });
 // Gestisci la richiesta per ottenere tutti i dati delle piante
 app.get('/plants', (req, res) => {
