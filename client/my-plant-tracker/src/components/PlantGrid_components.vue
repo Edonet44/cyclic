@@ -27,16 +27,33 @@ link verso plantdetail
 
 <script>
 import { ref, computed } from "vue";
+import axios from "axios";
 //importo il file test.js di test
-import { plants } from "../test/test";
+//import { plants } from "../test/test";
 export default {
- 
-setup() {
-    const plantsData = ref(plants);
+  //per il testing del file test.js
+  // setup() {
+  //     const plantsData = ref(plants);
 
+  //     return {
+  //       plants: plantsData,
+  //     };
+  //   },
+
+  data() {
     return {
-      plants: plantsData,
+      plants: [],
     };
+  },
+  created() {
+    axios
+      .get("https://yellow-vulture-suit.cyclic.app/plants")
+      .then((response) => {
+        this.plants = response.data;
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   },
 };
 </script>
@@ -45,7 +62,7 @@ setup() {
 <style scoped>
 .plant-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); 
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 }
 
