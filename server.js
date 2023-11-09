@@ -61,7 +61,7 @@ app.use(cors(corsOptions));
 
 app.all('/', (req, res) => {
   console.log("Richiesta in corso");
-  res.send('Server avviato');
+  res.send('Server attivato');
 });
 
 // Gestisci la richiesta per ottenere tutti i dati delle piante
