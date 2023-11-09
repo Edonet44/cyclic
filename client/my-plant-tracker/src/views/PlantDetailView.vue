@@ -8,7 +8,7 @@ Questa vista mostra i dettagli completi di una pianta specifica.
 
 <template>
   <section>
-<Plantdetail_component/>
+<Plantdetail_components/>
   </section>
 </template>
 
