@@ -2,9 +2,9 @@
 defineProps({
   msg: {
     type: String,
-    required: true
-  }
-})
+    required: true,
+  },
+});
 </script>
 
 <template>
@@ -12,8 +12,8 @@ defineProps({
     <h1 class="green">{{ msg }}</h1>
     <h3>
       Benvenuto nella app Plant-Tracker
-      <a href="https://vitejs.dev/" target="_blank" rel="noopener">Versione</a> :::
-      <a href="https://vuejs.org/" target="_blank" rel="noopener">1.0</a>.
+      <a href="https://vitejs.dev/" target="_blank" rel="noopener">Versione</a>
+      ::: <a href="https://vuejs.org/" target="_blank" rel="noopener">1.1</a>.
     </h3>
   </div>
 </template>
