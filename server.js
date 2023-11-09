@@ -72,7 +72,7 @@ app.get('/plants', (req, res) => {
     res.json(plantsData);
   }
 });
-
+//aggiunto 10:13 9/11
 // Gestisci la richiesta per ottenere un dato specifico di una pianta per ID
 app.get('/plants/:id', (req, res) => {
   const plantId = req.params.id; // Estrai l'ID dalla richiesta
@@ -84,6 +84,8 @@ app.get('/plants/:id', (req, res) => {
     res.json(plant);
   }
 });
+/////////////////////////////////////////////
+
 
 // Gestione degli errori
 app.use((err, req, res, next) => {
