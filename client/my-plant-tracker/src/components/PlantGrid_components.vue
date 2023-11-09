@@ -17,7 +17,7 @@ link verso plantdetail
         <p>Data di Piantumazione: {{ plant.plantingDate }}</p>
         <p>Altezza Iniziale: {{ plant.initialHeight }} cm</p>
         <p>Note{{ plant.notes }}</p>
-        <router-link :to="'/plants/id/' + plant._id">
+        <router-link :to="'/plants/' + plant._id">
           <button>Apri dettagli</button>
         </router-link>
       </div>
