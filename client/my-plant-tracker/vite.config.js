@@ -24,7 +24,7 @@ export default defineConfig({
           'Access-Control-Allow-Credentials': 'true',
         },
       },
-       '/plants/id': { // Esempio di percorso con un parametro ID
+       '/plants/:id': { // Esempio di percorso con un parametro ID
       target: 'https://yellow-vulture-suit.cyclic.app', // dominio server
       changeOrigin: true,
        rewrite: (path) => path.replace(/^\/plants\/id\//, '/'), // Assicurati che il parametro ID venga incluso
