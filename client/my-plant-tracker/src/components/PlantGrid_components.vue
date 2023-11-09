@@ -9,7 +9,7 @@ link verso plantdetail
 -->
 
 <template>
-  <div class="platn-grid">
+  <div class="plant-grid">
     <div v-for="plant in plants" :key="plant._id" class="plant-item">
       <img :src="plant.imageUrl" alt="Plant image" />
       <div class="plant_info">

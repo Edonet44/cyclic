@@ -51,7 +51,7 @@ const cors = require('cors');
 
 // Abilita il CORS
 const corsOptions = {
-  origin: 'https://myplanttracker-2e0a9.web.app', // Sostituisci con il dominio effettivo del tuo client
+  origin: 'https://myplanttracker-2e0a9.web.app', // dominio il tuo client
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true,
 };
@@ -70,6 +70,18 @@ app.get('/plants', (req, res) => {
     res.status(500).json({ error: 'Dati delle piante non trovati' });
   } else {
     res.json(plantsData);
+  }
+});
+
+// Gestisci la richiesta per ottenere un dato specifico di una pianta per ID
+app.get('/plants/:id', (req, res) => {
+  const plantId = req.params.id; // Estrai l'ID dalla richiesta
+  const plant = plantsData.find((plant) => plant._id === plantId);
+
+  if (!plant) {
+    res.status(404).json({ error: 'Pianta non trovata' });
+  } else {
+    res.json(plant);
   }
 });
 

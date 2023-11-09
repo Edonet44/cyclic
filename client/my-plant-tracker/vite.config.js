@@ -16,14 +16,23 @@ export default defineConfig({
   server: {
     proxy: {
       '/plants': {
-        target: 'https://yellow-vulture-suit.cyclic.app',
+        target: 'https://yellow-vulture-suit.cyclic.app',  //dominio server
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/plants/, ''),
         headers: {
-          'Access-Control-Allow-Origin': 'https://myplanttracker-2e0a9.web.app', // Sostituisci con il dominio del tuo client
+          'Access-Control-Allow-Origin': 'https://myplanttracker-2e0a9.web.app', // dominio client
           'Access-Control-Allow-Credentials': 'true',
         },
       },
+       '/plants/id': { // Esempio di percorso con un parametro ID
+      target: 'https://yellow-vulture-suit.cyclic.app', // dominio server
+      changeOrigin: true,
+      rewrite: (path) => path.replace(/^\/plants\/(\d+)/, '/$1'), // Assicurati che il parametro ID venga incluso
+      headers: {
+        'Access-Control-Allow-Origin': 'https://myplanttracker-2e0a9.web.app', // dominio client
+        'Access-Control-Allow-Credentials': 'true',
+      },
+    },
     },
   },
 })
