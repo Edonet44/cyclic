@@ -22,7 +22,7 @@ export default {
   },
   created() {
     //ottiendi l id della route
-    const platnId = this.$route.params.id;
+    const plantId = this.$route.params.id;
     //effettua la chiamata api per ottenere i dettagli della pianta
      axios
       .get(`https://yellow-vulture-suit.cyclic.app/plants/${plantId}`)
