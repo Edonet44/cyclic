@@ -18,7 +18,7 @@ import PlantDetail_components from '../components/PlantDetail_components.vue';
 
 export default {
   components: {
-    Plantdetail_component, // Dichiarazione del componente per l'uso nella vista
+    PlantDetail_components, // Dichiarazione del componente per l'uso nella vista
   },
 };
 </script>
