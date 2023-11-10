@@ -9,6 +9,7 @@
             "request": "launch",
             "name": "Launch Chrome against localhost",
             "url": "http://localhost:5173",
+           //"url":"https://myplanttracker-2e0a9.web.app",
             "webRoot": "${workspaceFolder}",
             "sourceMap": true 
         }

@@ -20,30 +20,6 @@ const plantsData = [
   // Aggiungi altri dati delle piante
 ];
 
-//old
-
-// const express = require('express')
-// const app = express();
-// const cors = require('cors');
-// //abilitare i Cors
-// const corsOptions = {
-//   origin: 'https://myplanttracker-2e0a9.web.app', // Dominio client
-//   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-//   credentials: true,
-// };
-// //abilita i cors
-// app.use(cors(corsOptions));
-
-// app.all('/', (req, res) => {
-//     console.log("Richiesta in corso")
-//     res.send('Server avviato')
-// });
-// // Gestisci la richiesta per ottenere tutti i dati delle piante
-// app.get('/plants', (req, res) => {
-//   res.json(plantsData);
-// });
-// app.listen(process.env.PORT || 3000)
-
 
 const express = require('express');
 const app = express();
