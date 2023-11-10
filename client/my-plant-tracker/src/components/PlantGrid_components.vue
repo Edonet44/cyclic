@@ -23,7 +23,6 @@ link verso plantdetail
         <router-link :to="{ name: 'plantsdetail', params: { id: plant._id }}">
   <button>Apri dettagli</button>
 </router-link>
-
       </div>
     </div>
   </div>
