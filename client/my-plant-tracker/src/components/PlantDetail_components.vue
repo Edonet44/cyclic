@@ -1,6 +1,6 @@
 <template>
 <div class="plant_detail">
-    <h1>Dettagli della Pianta</h1>
+    <h1>I dettagli della Pianta</h1>
     <div v-if="plant" class="plant-info">
       <h3>{{ plant.name }}</h3>
       <p>Data di Piantumazione: {{ plant.plantingDate }}</p>
@@ -26,7 +26,8 @@ export default {
     //effettua la chiamata api per ottenere i dettagli della pianta
      axios
       .get(`https://yellow-vulture-suit.cyclic.app/plants/${plantId}`)
-      .then((response) => {
+       .then((response) => {
+         console.log('Dati della pianta:', response.data);
         this.plant = response.data;
       })
       .catch((error) => {
