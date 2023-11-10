@@ -109,13 +109,9 @@ app.get('/get-plants', async (req, res) => {
   }
 });
 
-
-
-
-
 ////////////////////////////////////TEST CONNESSIONE///////////////////////////////////////
 
-//
+
 app.all('/', (req, res) => {
   console.log("Richiesta in corso");
   res.send('Server attivato');
