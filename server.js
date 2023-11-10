@@ -65,10 +65,10 @@ app.get('/', (req, res) => {
   res.send({ plant: 'Plants' });
 });
 
-//Routes go here
-app.all('*', (req,res) => {
-    res.json({"every thing":"is awesome"})
-})
+// //Routes go here
+// app.all('*', (req,res) => {
+//     res.json({"every thing":"is awesome"})
+// })
 
 ///////////////////INSERT/////////////////////////////////////////
 app.get('/add-note', async (req, res) => { 
