@@ -28,23 +28,11 @@ const mongoose = require('mongoose');
 const Plants = require('./models/plants');
 const app = express();
 const cors = require('cors');
-const PORT = process.env.PORT;
-//const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000;
 
 
 mongoose.set('strictQuery', false);
 
-///////////////////////////////CORS////////////////////////////////////////////////
-
-// Abilita i CORS lato client
-const corsOptions = {
-  origin: 'https://myplanttracker-2e0a9.web.app', // dominio il tuo client
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  credentials: true,
-};
-
-// Applica il middleware CORS all'app
-app.use(cors(corsOptions));
 
 /////////////////////////////////////////DB/////////////////////////////////7
 //imposta la connessione con Mongodb
@@ -71,6 +59,20 @@ app.get('/', (req, res) => {
 // app.all('*', (req,res) => {
 //     res.json({"every thing":"is awesome"})
 // })
+
+///////////////////////////////CORS////////////////////////////////////////////////
+
+// Abilita i CORS lato client
+const corsOptions = {
+  origin: 'https://myplanttracker-2e0a9.web.app', // dominio del tuo client
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true,
+};
+
+// Applica il middleware CORS all'app
+app.use(cors(corsOptions));
+
+
 
 ///////////////////INSERT/////////////////////////////////////////
 app.get('/add-note', async (req, res) => { 
