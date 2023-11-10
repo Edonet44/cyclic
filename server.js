@@ -28,7 +28,9 @@ const mongoose = require('mongoose');
 const Plants = require('./models/plants');
 const app = express();
 const cors = require('cors');
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT;
+//const PORT = process.env.PORT || 3000;
+
 
 mongoose.set('strictQuery', false);
 
@@ -168,6 +170,3 @@ app.use((err, req, res, next) => {
   res.status(500).json({ error: 'Errore interno del server' });
 });
 
-// app.listen(process.env.PORT || 3000, () => {
-//   console.log('Server in ascolto sulla porta ' + (process.env.PORT || 3000));
-// });
