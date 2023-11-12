@@ -56,7 +56,7 @@ const instance = axios.create({
   withCredentials: true,
 });
 // Ora puoi utilizzare questa istanza di Axios per effettuare le tue richieste API
-instance.get('/plants')
+instance.get('/get-plants')
   .then((response) => {
      this.plants = response.data;
   })
