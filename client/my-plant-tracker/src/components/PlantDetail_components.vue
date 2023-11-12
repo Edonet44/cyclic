@@ -36,21 +36,43 @@ export default {
 //           console.error('Errore durante il recupero dei dati della pianta:', error);
 //       });
   //   },
- async created() {
-    try {
-      // Ottieni l'id dalla route
-      const plantId = this.$route.params.id;
-      // Effettua la chiamata API per ottenere i dettagli della pianta
-      const response = await axios.get(
-        `https://yellow-vulture-suit.cyclic.app/plants/${plantId}`
-      );
+//  async created() {
+//     try {
+//       // Ottieni l'id dalla route
+//       const plantId = this.$route.params.id;
+//       // Effettua la chiamata API per ottenere i dettagli della pianta
+//       const response = await axios.get(
+//         `https://yellow-vulture-suit.cyclic.app/plants/${plantId}`
+//       );
+//       console.log('Dati della pianta:', response.data);
+//       // Assegna i dati della pianta alla variabile 'plant'
+//       this.plant = response.data;
+//     } catch (error) {
+//       console.error("Errore durante il recupero dei dati della pianta:", error);
+//     }
+//   },
+async created() {
+  // Crea un'istanza di Axios con la configurazione specifica
+  const instance = axios.create({
+    baseURL: 'https://yellow-vulture-suit.cyclic.app', // Dominio Server
+    timeout: 10000,
+    withCredentials: true,
+  });
+
+  // Ottieni l'id dalla route
+  const plantId = this.$route.params.id;
+
+  // Effettua la chiamata API per ottenere i dettagli della pianta
+  instance.get(`/plants/${plantId}`)
+    .then((response) => {
       console.log('Dati della pianta:', response.data);
       // Assegna i dati della pianta alla variabile 'plant'
       this.plant = response.data;
-    } catch (error) {
+    })
+    .catch((error) => {
       console.error("Errore durante il recupero dei dati della pianta:", error);
-    }
-  },
+    });
+},
 
     
 }
