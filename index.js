@@ -125,16 +125,7 @@ app.get('/get-plants', async (req, res) => {
   }
 });
 
-////////////////////////////////////TEST CONNESSIONE///////////////////////////////////////
-
-
-app.all('/', (req, res) => {
-  console.log("Richiesta in corso");
-  res.send('Server attivato');
-});
-
-////////////////////////////////////REQUEST DB/////////////////////////////////
-
+//Rotta per richiesta di un singolo dato
 app.get('/plants/:id', async (req, res) => {
   const plantId = req.params.id;
   try {
@@ -150,8 +141,62 @@ app.get('/plants/:id', async (req, res) => {
   }
 });
 
+///////////////////////////////////UPDATE ///////////////////////////////////
 
-//////////////////////////////////////////////////REQUEST JSON //////////////////////////////
+// Aggiornamento di un dato
+app.put('/update-note/:id', async (req, res) => {
+  const plantId = req.params.id;
+  const updatedData = req.body; // Assicurati che la richiesta contenga i nuovi dati
+
+  try {
+    // Esegui l'aggiornamento nel database
+    const updatedPlant = await Plants.findByIdAndUpdate(plantId, updatedData, { new: true });
+
+    if (!updatedPlant) {
+      res.status(404).json({ error: 'Pianta non trovata' });
+    } else {
+      res.json(updatedPlant);
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Errore durante l\'aggiornamento dei dati' });
+  }
+});
+
+
+////////////////////////////////////DELETE////////////////////////////////////
+
+// Cancellazione di un dato
+app.delete('/delete-note/:id', async (req, res) => {
+  const plantId = req.params.id;
+
+  try {
+    // Esegui la cancellazione nel database
+    const deletedPlant = await Plants.findByIdAndDelete(plantId);
+
+    if (!deletedPlant) {
+      res.status(404).json({ error: 'Pianta non trovata' });
+    } else {
+      res.json({ message: 'Pianta cancellata con successo', deletedPlant });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Errore durante la cancellazione dei dati' });
+  }
+});
+
+
+
+///////////////////////////////TEST CONNESSIONE//////////////////////////
+
+
+app.all('/', (req, res) => {
+  console.log("Richiesta in corso");
+  res.send('Server attivato');
+});
+
+
+//////////////////////////////////////////////////TEST JSON //////////////////////////////
 
 // Gestisci la richiesta per ottenere tutti i dati delle piante
 app.get('/plants', (req, res) => {
@@ -161,22 +206,8 @@ app.get('/plants', (req, res) => {
     res.json(plantsData);
   }
 });
-//aggiunto 10:13 9/11
-// Gestisci la richiesta per ottenere un dato specifico di una pianta per ID
-app.get('/plants/:id', (req, res) => {
-  const plantId = req.params.id; // Estrai l'ID dalla richiesta
-  const plant = plantsData.find((plant) => plant._id === plantId);
-
-  if (!plant) {
-    res.status(404).json({ error: 'Pianta non trovata' });
-  } else {
-    res.json(plant);
-  }
-});
-
 
 ///////////////////////////////////ERRORS///////////////////////////////
-
 
 // Gestione degli errori
 app.use((err, req, res, next) => {
