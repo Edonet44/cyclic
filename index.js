@@ -84,12 +84,20 @@ app.get('/add-note', async (req, res) => {
     //inserisce dei valori test su mongodb
     await Plants.insertMany([
       {
-        _id: 'jkfsh3243',
-        name: 'Edotest',
-        plantingDate: '2020/02/20',
-        initialHeight: 30,
-        notes: 'sdkjfhasdhfasdfasdfasdkvancv',
-        imageUrl: 'https://dsfdsfjsdkfds.gdfgjd.om'
+        _id: 'jkfserte34543',
+        name: 'Naptest',
+        plantingDate: '2020/04/05',
+        initialHeight: 20,
+        notes: 'pianta numero 45',
+        imageUrl: 'https://erkfd.pzuz.om'
+      },
+      {
+        _id: 'jkfs8935ri',
+        name: 'Ritest',
+        plantingDate: '2020/07/04',
+        initialHeight: 10,
+        notes: 'ualllaa',
+        imageUrl: 'https://mareur.fds.om'
       },
     ]);
     res.send("Aggiunto dato"); // Invia la risposta solo dopo l'inserimento dei dati
