@@ -23,11 +23,11 @@ const router = createRouter({
       component: () => import('../views/PlantRegistrationView.vue')
     },
         {
-    path: '/plants',
+    path: '/get-plants',
     name: 'plants',
     component: () => import('../views/PlantListView.vue')
   },
-    {
+    {       
     path: '/plants/:id',
     name: 'plantsdetail',
     component: () => import('../views/PlantDetailView.vue')
