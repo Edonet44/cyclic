@@ -12,7 +12,7 @@
 </template>
 
 <script>
-
+import axios from "axios";
   // Crea un'istanza di Axios con la configurazione specifica
   const instance = axios.create({
     baseURL: 'https://yellow-vulture-suit.cyclic.app', // Dominio Server
