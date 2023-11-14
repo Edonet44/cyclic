@@ -49,6 +49,7 @@ async created() {
   // Effettua la chiamata API per ottenere i dettagli della pianta
   instance.get(`/plants/${plantId}`)
     .then((response) => {
+      debugger;
       console.log('Dati della pianta:', response.data);
       // Assegna i dati della pianta alla variabile 'plant'
       this.plant = response.data;
