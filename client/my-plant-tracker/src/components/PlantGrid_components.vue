@@ -51,11 +51,11 @@ export default {
   },
   created() {
 
-const instance = axios.create({
-  baseURL: 'https://yellow-vulture-suit.cyclic.app', // Dominio Server
-  timeout: 10000,
-  withCredentials: true,
-});
+// const instance = axios.create({
+//   baseURL: 'https://yellow-vulture-suit.cyclic.app', // Dominio Server
+//   timeout: 10000,
+//   withCredentials: true,
+// });
 // Ora puoi utilizzare questa istanza di Axios per effettuare le tue richieste API
 instance.get('/get-plants')
   .then((response) => {
