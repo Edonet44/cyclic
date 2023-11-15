@@ -11,11 +11,11 @@
   </div>
 </template>
 
-<script>
+<!-- <script>
 import axios from "../axios/axios";
 
 // Abilita la visualizzazione dei log per le risposte
-instance.interceptors.response.use(
+axios.instance.interceptors.response.use(
   (response) => {
     console.log("Response:", response);
     return response;
@@ -54,7 +54,55 @@ export default {
       });
   },
 };
+</script> -->
+
+
+<script>
+import axios from "../axios/axios";
+
+// Abilita la visualizzazione dei log per le risposte
+axios.interceptors.response.use(
+  (response) => {
+    console.log("Response:", response);
+    return response;
+  },
+  (error) => {
+    console.error("Response Error:", error);
+    throw error;
+  }
+);
+
+export default {
+  data() {
+    return {
+      plant: null, //oggetto che conterrà i dati della pianta
+    };
+  },
+
+  async created() {
+    // Ottieni l'id dalla route
+    const plantId = this.$route.params.id;
+
+    // Effettua la chiamata API per ottenere i dettagli della pianta
+    axios
+      .get(`/plants/${plantId}`)
+      .then((response) => {
+        debugger;
+        console.log("Dati della pianta:", response.data);
+        // Assegna i dati della pianta alla variabile 'plant'
+        this.plant = response.data;
+      })
+      .catch((error) => {
+        console.error(
+          "Errore durante il recupero dei dati della pianta:",
+          error
+        );
+      });
+  },
+};
 </script>
+
+
 
 <style scoped>
 .plant_detail {
