@@ -1,70 +1,59 @@
 <template>
-<div class="plant_detail">
+  <div class="plant_detail">
     <h1>I dettagli della Pianta</h1>
     <div v-if="plant" class="plant-info">
       <h3>{{ plant.name }}</h3>
       <p>Data di Piantumazione: {{ plant.plantingDate }}</p>
       <p>Altezza Iniziale: {{ plant.initialHeight }} cm</p>
       <p>Note: {{ plant.notes }}</p>
-    </div> 
+    </div>
     <div v-else><p>Caricamento in corso...</p></div>
   </div>
 </template>
 
 <script>
-import axios from "axios";
-  // Crea un'istanza di Axios con la configurazione specifica
-  const instance = axios.create({
-    baseURL: 'https://yellow-vulture-suit.cyclic.app', // Dominio Server
-    timeout: 10000,
-    withCredentials: true,
-  });
-
+import axios from "../axios/axios";
 
 // Abilita la visualizzazione dei log per le risposte
-instance.interceptors.response.use(response => {
-  console.log('Response:', response);
-  return response;
-}, error => {
-  console.error('Response Error:', error);
-  throw error;
-});
-
+instance.interceptors.response.use(
+  (response) => {
+    console.log("Response:", response);
+    return response;
+  },
+  (error) => {
+    console.error("Response Error:", error);
+    throw error;
+  }
+);
 
 export default {
-
   data() {
-
     return {
-      plant:null  //oggetto che conterra i dati della pianta
-    }
+      plant: null, //oggetto che conterra i dati della pianta
+    };
   },
 
-  
-async created() {
+  async created() {
+    // Ottieni l'id dalla route
+    const plantId = this.$route.params.id;
 
-  // Ottieni l'id dalla route
-  const plantId = this.$route.params.id;
-
-  // Effettua la chiamata API per ottenere i dettagli della pianta
-  instance.get(`/plants/${plantId}`)
-    .then((response) => {
-      debugger;
-      console.log('Dati della pianta:', response.data);
-      // Assegna i dati della pianta alla variabile 'plant'
-      this.plant = response.data;
-    })
-    .catch((error) => {
-      console.error("Errore durante il recupero dei dati della pianta:", error);
-    });
-},
-
-
-
-    
-}
-
-
+    // Effettua la chiamata API per ottenere i dettagli della pianta
+    axios
+      .get(`/plants/${plantId}`)
+      .then((response) => {
+        debugger;
+        console.log("Dati della pianta:", response.data);
+        // Assegna i dati della pianta alla variabile 'plant'
+        this.plant = response.data;
+      })
+      .catch((error) => {
+        console.error(
+          "Errore durante il recupero dei dati della pianta:",
+          error
+        );
+      });
+  },
+};
 </script>
 
 <style scoped>

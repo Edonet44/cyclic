@@ -30,7 +30,8 @@ link verso plantdetail
 
 <script>
 import { ref, computed } from "vue";
-import axios from "axios";
+//import axios from "axios";
+import axios from "../axios/axios";
 //importo il file test.js di test
 //import { plants } from "../test/test";
 export default {
