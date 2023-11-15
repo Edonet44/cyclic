@@ -57,14 +57,20 @@ export default {
 //   withCredentials: true,
 // });
 // Ora puoi utilizzare questa istanza di Axios per effettuare le tue richieste API
-instance.get('/get-plants')
+// instance.get('/get-plants')
+//   .then((response) => {
+//      this.plants = response.data;
+//   })
+//   .catch((error) => {
+//     console.error(error);
+//   });
+axios.get('/get-plants')
   .then((response) => {
      this.plants = response.data;
   })
   .catch((error) => {
     console.error(error);
   });
-
 
   },
  
