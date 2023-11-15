@@ -60,17 +60,17 @@ export default {
 <script>
 import axios from "../axios/axios";
 
-// Abilita la visualizzazione dei log per le risposte
-axios.interceptors.response.use(
-  (response) => {
-    console.log("Response:", response);
-    return response;
-  },
-  (error) => {
-    console.error("Response Error:", error);
-    throw error;
-  }
-);
+// // Abilita la visualizzazione dei log per le risposte
+// axios.interceptors.response.use(
+//   (response) => {
+//     console.log("Response:", response);
+//     return response;
+//   },
+//   (error) => {
+//     console.error("Response Error:", error);
+//     throw error;
+//   }
+// );
 
 export default {
   data() {
