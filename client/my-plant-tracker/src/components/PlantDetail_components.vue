@@ -75,7 +75,8 @@ import axios from "../axios/axios";
 export default {
   data() {
     return {
-      plant: null, //oggetto che conterrà i dati della pianta
+     // plant: null,
+      plant: [],//oggetto che conterrà i dati della pianta
     };
   },
 
