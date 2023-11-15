@@ -1,13 +1,21 @@
 <template>
   <div class="plant_detail">
     <h1>I dettagli della Pianta</h1>
-    <div v-if="plant" class="plant-info">
+    <!-- <div v-if="plant" class="plant-info">
       <h3>{{ plant.name }}</h3>
       <p>Data di Piantumazione: {{ plant.plantingDate }}</p>
       <p>Altezza Iniziale: {{ plant.initialHeight }} cm</p>
       <p>Note: {{ plant.notes }}</p>
     </div>
-    <div v-else><p>Caricamento in corso...</p></div>
+    <div v-else><p>Caricamento in corso...</p></div> -->
+
+
+    <div class="plant-info">
+      <h3>{{ plant.name }}</h3>
+      <p>Data di Piantumazione: {{ plant.plantingDate }}</p>
+      <p>Altezza Iniziale: {{ plant.initialHeight }} cm</p>
+      <p>Note: {{ plant.notes }}</p>
+    </div>
   </div>
 </template>
 
@@ -75,8 +83,8 @@ import axios from "../axios/axios";
 export default {
   data() {
     return {
-     // plant: null,
-      plant: [],//oggetto che conterrà i dati della pianta
+     plant: null,
+    //  plant: [],//oggetto che conterrà i dati della pianta
     };
   },
 
