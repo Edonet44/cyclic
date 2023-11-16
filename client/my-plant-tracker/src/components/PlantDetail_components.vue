@@ -1,21 +1,21 @@
 <template>
-  <div class="plant_detail">
+  <div class="plant_details">
     <h1>I dettagli della Pianta</h1>
-    <!-- <div v-if="plant" class="plant-info">
+    <div v-if="plant" class="plant-info">
       <h3>{{ plant.name }}</h3>
       <p>Data di Piantumazione: {{ plant.plantingDate }}</p>
       <p>Altezza Iniziale: {{ plant.initialHeight }} cm</p>
       <p>Note: {{ plant.notes }}</p>
     </div>
-    <div v-else><p>Caricamento in corso...</p></div> -->
+    <div v-else><p>Caricamento in corso...</p></div>
 
 
-    <div class="plant-info">
+    <!-- <div class="plant-info">
       <h3>{{ plant.name }}</h3>
       <p>Data di Piantumazione: {{ plant.plantingDate }}</p>
       <p>Altezza Iniziale: {{ plant.initialHeight }} cm</p>
       <p>Note: {{ plant.notes }}</p>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -69,16 +69,16 @@ export default {
 import axios from "../axios/axios";
 
 // // Abilita la visualizzazione dei log per le risposte
-// axios.interceptors.response.use(
-//   (response) => {
-//     console.log("Response:", response);
-//     return response;
-//   },
-//   (error) => {
-//     console.error("Response Error:", error);
-//     throw error;
-//   }
-// );
+axios.interceptors.response.use(
+  (response) => {
+    console.log("Response:", response);
+    return response;
+  },
+  (error) => {
+    console.error("Response Error:", error);
+    throw error;
+  }
+);
 
 export default {
   data() {
